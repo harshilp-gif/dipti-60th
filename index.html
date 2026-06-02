@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dipti's 60th Birthday Celebration</title>
+    <style>
+        /* Base Reset and Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #8B4F65; /* Darker, Rich Berry Pink Background */
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ----- ANIMATED CHERRY BLOSSOM FLOWERS ----- */
+        .flower {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: -15%;
+            z-index: 1;
+            pointer-events: none;
+            animation: floatAndSpin linear infinite;
+        }
+
+        /* Creating a 5-petal blossom using pure CSS shapes */
+        .flower-inner, .flower-inner::before, .flower-inner::after {
+            content: '';
+            position: absolute;
+            background: #F3C1CD; /* Soft Pink Flower */
+            width: 20px;
+            height: 35px;
+            border-radius: 50% 50% 45% 45% / 40% 40% 60% 60%;
+            left: 15px;
+            top: 0;
+            transform-origin: bottom center;
+            box-shadow: inset 0 5px 5px rgba(210, 159, 176, 0.6);
+        }
+
+        .flower-inner::before { transform: rotate(72deg); }
+        .flower-inner::after { transform: rotate(144deg); }
+
+        .flower-extra, .flower-extra::before {
+            content: '';
+            position: absolute;
+            background: #F3C1CD;
+            width: 20px;
+            height: 35px;
+            border-radius: 50% 50% 45% 45% / 40% 40% 60% 60%;
+            left: 15px;
+            top: 0;
+            transform-origin: bottom center;
+            box-shadow: inset 0 5px 5px rgba(210, 159, 176, 0.6);
+        }
+        .flower-extra { transform: rotate(216deg); }
+        .flower-extra::before { transform: rotate(72deg); }
+
+        /* Small darker pink center for the flower */
+        .flower::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #B67F91;
+            border-radius: 50%;
+            left: 21px;
+            top: 27px;
+            z-index: 2;
+        }
+
+        /* Varying paths, sizing, and delays for the falling flowers */
+        .flower:nth-child(1) { left: 5%; transform: scale(0.9); animation-duration: 10s; animation-delay: 0s; }
+        .flower:nth-child(2) { left: 22%; transform: scale(0.7); animation-duration: 14s; animation-delay: 3s; }
+        .flower:nth-child(3) { left: 45%; transform: scale(1.1); animation-duration: 9s; animation-delay: 1s; }
+        .flower:nth-child(4) { left: 70%; transform: scale(0.8); animation-duration: 12s; animation-delay: 5s; }
+        .flower:nth-child(5) { left: 88%; transform: scale(1); animation-duration: 15s; animation-delay: 1.5s; }
+
+        @keyframes floatAndSpin {
+            0% {
+                top: -15%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0.85;
+            }
+            50% {
+                transform: translateX(80px) rotate(180deg);
+                opacity: 0.7;
+            }
+            100% {
+                top: 115%;
+                transform: translateX(-40px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ----- INVITATION CARD ----- */
+        .invitation-card {
+            background: #B67F91; /* Rich Dusty Rose for the Card */
+            border: 3px double #E8D8C8; /* Soft Beige Border */
+            border-radius: 16px;
+            padding: 50px 30px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 10;
+            animation: cardAppear 1.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floral/Cherry Blossom Top Icon */
+        .floral-accent {
+            color: #E8D8C8; /* Beige Floral Embellishment */
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        /* Typography Styling */
+        h2 {
+            color: #F5F5DC; /* Cream Beige */
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #E8D8C8; /* Classic Warm Beige */
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .age {
+            color: #FFFFFF;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .message {
+            color: #FFF3F5;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
+
+        /* Surprise Note Style */
+        .surprise-note {
+            color: #F5F5DC; /* Cream Beige */
+            font-size: 0.95rem;
+            font-style: italic;
+            letter-spacing: 1px;
+            margin-bottom: 35px;
+            display: block;
+            animation: softPulse 2.5s infinite;
+        }
+
+        @keyframes softPulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; color: #FFFFFF; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Event Details Styling */
+        .details-container {
+            margin-bottom: 35px;
+            border-top: 1px dashed rgba(232, 216, 200, 0.4);
+            border-bottom: 1px dashed rgba(232, 216, 200, 0.4);
+            padding: 20px 0;
+        }
+
+        .detail-item {
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            margin: 14px 0;
+            letter-spacing: 1px;
+        }
+
+        .detail-item strong {
+            color: #F5F5DC;
+        }
+
+        /* Matte Beige RSVP Button */
+        .rsvp-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8D8C8 50%, #DFD0C0 100%);
+            color: #5E3442; /* Deep dusty rose text color for contrast */
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(232, 216, 200, 0.2);
+            font-size: 1rem;
+        }
+
+        .rsvp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(232, 216, 200, 0.4);
+            filter: brightness(1.05);
+        }
+
+        /* Hosts Styling */
+        .hosts {
+            margin-top: 35px;
+            color: #E8D8C8;
+            font-size: 1.05rem;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flower"><div class="flower-inner"></div><div class="flower-extra"></div></div>
+    <div class="flower"><div class="flower-inner"></div><div class="flower-extra"></div></div>
+    <div class="flower"><div class="flower-inner"></div><div class="flower-extra"></div></div>
+    <div class="flower"><div class="flower-inner"></div><div class="flower-extra"></div></div>
+    <div class="flower"><div class="flower-inner"></div><div class="flower-extra"></div></div>
+
+    <div class="invitation-card">
+        <div class="floral-accent">🌸 ❖ 🌸</div>
+        
+        <h2>Join us to Celebrate!</h2>
+        <h1>Dipti's</h1>
+        <div class="age">60th Birthday Celebration</div>
+        
+        <p class="message">
+            We invite you to a wonderful evening filled with joy and memories as we celebrate a lifetime of happiness.
+        </p>
+        <span class="surprise-note">🤫 Shh... It's a surprise party! (Don't tell anyone)</span>
+
+        <div class="details-container">
+            <div class="detail-item">
+                📅 <strong>Date:</strong> September 6th, 2026
+            </div>
+            <div class="detail-item">
+                📍 <strong>Location:</strong> Encasa Apartments, Sunnyvale
+            </div>
+        </div>
+
+        <a href="sms:+14082282344" class="rsvp-btn">Text (408) - 228 - 2344 for RSVP</a>
+
+        <div class="hosts">
+            Hosted by Pinakin & Bindu
+        </div>
+    </div>
+
+</body>
+</html>
