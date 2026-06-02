@@ -230,8 +230,10 @@
         }
     </style>
 </head>
-<body onclick="startMusic()"> <audio id="bg-music" loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-instrumental-157.mp3" type="audio/mpeg">
+<body onclick="startMusic()" ontouchstart="startMusic()">
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://archive.org/download/happybirthdayinstrumental/happybirthdayinstrumental.mp3" type="audio/mpeg">
     </audio>
 
     <button class="music-toggle" id="music-btn" onclick="toggleMusic(event)">🎵 Music: Off</button>
@@ -266,7 +268,7 @@
             </div>
         </div>
 
-        <a href="sms:+14082282344" class="rsvp-btn">Text (408) - 228 - 2344 for RSVP</a>
+        <a href="sms:+14082282344" class="rsvp-btn" onclick="startMusic()">Text (408) - 228 - 2344 for RSVP</a>
 
         <div class="hosts">
             Hosted by Pinakin & Bindu
@@ -278,20 +280,22 @@
         var btn = document.getElementById("music-btn");
         var hasPlayed = false;
 
+        // Force a volume reset just in case code muted it
+        music.volume = 1.0;
+
         function startMusic() {
-            // Automatically plays the music on the guest's very first tap/scroll on the web screen
             if (!hasPlayed) {
                 music.play().then(() => {
                     btn.innerHTML = "🎵 Music: On";
                     hasPlayed = true;
                 }).catch(error => {
-                    console.log("Playback prevented until user interaction.");
+                    console.log("Autoplay block still active. Awaiting distinct user tap.");
                 });
             }
         }
 
         function toggleMusic(event) {
-            event.stopPropagation(); // Prevents the body tap function from conflicting
+            if(event) event.stopPropagation(); 
             if (music.paused) {
                 music.play();
                 btn.innerHTML = "🎵 Music: On";
