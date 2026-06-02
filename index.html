@@ -34,10 +34,11 @@
             animation: floatAndSpin linear infinite;
         }
 
+        /* Creating a 5-petal blossom using pure CSS shapes */
         .flower-inner, .flower-inner::before, .flower-inner::after {
             content: '';
             position: absolute;
-            background: #F3C1CD;
+            background: #F3C1CD; /* Soft Pink Flower */
             width: 18px;
             height: 31px;
             border-radius: 50% 50% 45% 45% / 40% 40% 60% 60%;
@@ -65,6 +66,7 @@
         .flower-extra { transform: rotate(216deg); }
         .flower-extra::before { transform: rotate(72deg); }
 
+        /* Small darker pink center for the flower */
         .flower::after {
             content: '';
             position: absolute;
@@ -77,6 +79,7 @@
             z-index: 2;
         }
 
+        /* Varying paths, sizing, and delays for the falling flowers */
         .flower:nth-child(1) { left: 5%; transform: scale(0.8); animation-duration: 10s; animation-delay: 0s; }
         .flower:nth-child(2) { left: 22%; transform: scale(0.6); animation-duration: 14s; animation-delay: 3s; }
         .flower:nth-child(3) { left: 45%; transform: scale(1); animation-duration: 9s; animation-delay: 1s; }
@@ -84,19 +87,30 @@
         .flower:nth-child(5) { left: 88%; transform: scale(0.9); animation-duration: 15s; animation-delay: 1.5s; }
 
         @keyframes floatAndSpin {
-            0% { top: -15%; transform: translateX(0) rotate(0deg); opacity: 0.85; }
-            50% { transform: translateX(60px) rotate(180deg); opacity: 0.7; }
-            100% { top: 115%; transform: translateX(-30px) rotate(360deg); opacity: 0; }
+            0% {
+                top: -15%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0.85;
+            }
+            50% {
+                transform: translateX(60px) rotate(180deg);
+                opacity: 0.7;
+            }
+            100% {
+                top: 115%;
+                transform: translateX(-30px) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         /* ----- INVITATION CARD ----- */
         .invitation-card {
-            background: #B67F91;
-            border: 3px double #E8D8C8;
+            background: #B67F91; /* Rich Dusty Rose for the Card */
+            border: 3px double #E8D8C8; /* Soft Beige Border */
             border-radius: 16px;
-            padding: 35px 25px;
+            padding: 35px 25px; /* Shrunk padding to save vertical space */
             text-align: center;
-            max-width: 440px;
+            max-width: 440px; /* Slightly narrower card layout */
             width: 90%;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             position: relative;
@@ -107,17 +121,22 @@
         }
 
         @keyframes cardAppear {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        /* Floral/Cherry Blossom Top Icon */
         .floral-accent {
-            color: #E8D8C8;
+            color: #E8D8C8; /* Beige Floral Embellishment */
             font-size: 24px;
             margin-bottom: 10px;
         }
 
+        /* Typography Styling */
         h2 {
-            color: #F5F5DC;
+            color: #F5F5DC; /* Cream Beige */
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -126,7 +145,7 @@
         }
 
         h1 {
-            color: #E8D8C8;
+            color: #E8D8C8; /* Classic Warm Beige */
             font-size: 3rem;
             font-weight: bold;
             margin-bottom: 3px;
@@ -149,8 +168,9 @@
             padding: 0 10px;
         }
 
+        /* Surprise Note Style */
         .surprise-note {
-            color: #F5F5DC;
+            color: #F5F5DC; /* Cream Beige */
             font-size: 0.85rem;
             font-style: italic;
             letter-spacing: 1px;
@@ -165,6 +185,7 @@
             100% { opacity: 0.8; }
         }
 
+        /* Event Details Styling */
         .details-container {
             margin-bottom: 25px;
             border-top: 1px dashed rgba(232, 216, 200, 0.4);
@@ -179,12 +200,15 @@
             letter-spacing: 1px;
         }
 
-        .detail-item strong { color: #F5F5DC; }
+        .detail-item strong {
+            color: #F5F5DC;
+        }
 
+        /* Matte Beige RSVP Button */
         .rsvp-btn {
             display: inline-block;
             background: linear-gradient(135deg, #F5F5DC 0%, #E8D8C8 50%, #DFD0C0 100%);
-            color: #5E3442;
+            color: #5E3442; /* Deep dusty rose text color for contrast */
             font-weight: bold;
             letter-spacing: 1px;
             padding: 12px 25px;
@@ -201,6 +225,7 @@
             filter: brightness(1.05);
         }
 
+        /* Hosts Styling */
         .hosts {
             margin-top: 25px;
             color: #E8D8C8;
@@ -208,36 +233,9 @@
             font-style: italic;
             letter-spacing: 1px;
         }
-
-        /* ----- MUSIC BUTTON ----- */
-        .music-toggle {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(232, 216, 200, 0.2);
-            border: 1px solid #E8D8C8;
-            color: #F5F5DC;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        .music-toggle:hover {
-            background: #E8D8C8;
-            color: #5E3442;
-        }
     </style>
 </head>
 <body>
-
-    <audio id="bg-music" loop preload="auto">
-        <source src="https://actions.google.com/sounds/v1/ambiences/morning_birds.ogg" type="audio/ogg">
-        <source src="https://storage.googleapis.com/web-dev-assets/audio/the-video-game-7.mp3" type="audio/mpeg">
-    </audio>
-
-    <button class="music-toggle" id="music-btn" onclick="toggleMusic(event)">🎵 Music: Off</button>
 
     <div class="flower"><div class="flower-inner"></div><div class="flower-extra"></div></div>
     <div class="flower"><div class="flower-inner"></div><div class="flower-extra"></div></div>
@@ -275,43 +273,6 @@
             Hosted by Pinakin & Bindu
         </div>
     </div>
-
-    <script>
-        var music = document.getElementById("bg-music");
-        var btn = document.getElementById("music-btn");
-        var hasPlayed = false;
-
-        // Force maximum volume setting
-        music.volume = 1.0;
-
-        function startMusic() {
-            if (!hasPlayed) {
-                music.play().then(() => {
-                    btn.innerHTML = "🎵 Music: On";
-                    hasPlayed = true;
-                }).catch(error => {
-                    console.log("Waiting for user tap.");
-                });
-            }
-        }
-
-        // Listens to absolutely any touch, click, scroll, or tap anywhere on the screen
-        window.addEventListener('click', startMusic);
-        window.addEventListener('touchstart', startMusic);
-        window.addEventListener('touchend', startMusic);
-
-        function toggleMusic(event) {
-            if(event) event.stopPropagation(); 
-            if (music.paused) {
-                music.play();
-                btn.innerHTML = "🎵 Music: On";
-                hasPlayed = true;
-            } else {
-                music.pause();
-                btn.innerHTML = "🎵 Music: Off";
-            }
-        }
-    </script>
 
 </body>
 </html>
