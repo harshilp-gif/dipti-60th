@@ -230,10 +230,11 @@
         }
     </style>
 </head>
-<body onclick="startMusic()" ontouchstart="startMusic()">
+<body>
 
     <audio id="bg-music" loop preload="auto">
-        <source src="https://archive.org/download/happybirthdayinstrumental/happybirthdayinstrumental.mp3" type="audio/mpeg">
+        <source src="https://actions.google.com/sounds/v1/ambiences/morning_birds.ogg" type="audio/ogg">
+        <source src="https://storage.googleapis.com/web-dev-assets/audio/the-video-game-7.mp3" type="audio/mpeg">
     </audio>
 
     <button class="music-toggle" id="music-btn" onclick="toggleMusic(event)">🎵 Music: Off</button>
@@ -268,7 +269,7 @@
             </div>
         </div>
 
-        <a href="sms:+14082282344" class="rsvp-btn" onclick="startMusic()">Text (408) - 228 - 2344 for RSVP</a>
+        <a href="sms:+14082282344" class="rsvp-btn">Text (408) - 228 - 2344 for RSVP</a>
 
         <div class="hosts">
             Hosted by Pinakin & Bindu
@@ -280,7 +281,7 @@
         var btn = document.getElementById("music-btn");
         var hasPlayed = false;
 
-        // Force a volume reset just in case code muted it
+        // Force maximum volume setting
         music.volume = 1.0;
 
         function startMusic() {
@@ -289,10 +290,15 @@
                     btn.innerHTML = "🎵 Music: On";
                     hasPlayed = true;
                 }).catch(error => {
-                    console.log("Autoplay block still active. Awaiting distinct user tap.");
+                    console.log("Waiting for user tap.");
                 });
             }
         }
+
+        // Listens to absolutely any touch, click, scroll, or tap anywhere on the screen
+        window.addEventListener('click', startMusic);
+        window.addEventListener('touchstart', startMusic);
+        window.addEventListener('touchend', startMusic);
 
         function toggleMusic(event) {
             if(event) event.stopPropagation(); 
