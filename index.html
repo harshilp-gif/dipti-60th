@@ -18,8 +18,10 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            align-items: flex-start; /* Shifts layout window calculation to top-start */
+            padding-top: 5vh;        /* Keeps vertical space clean at the header */
+            padding-bottom: 40px;    /* Adds a strict safety buffer zone for iPhone Home Bar */
+            overflow-y: auto;        /* Allows smooth bounce scrolling on smaller devices if needed */
             position: relative;
         }
 
@@ -108,7 +110,7 @@
             background: #B67F91; /* Rich Dusty Rose for the Card */
             border: 3px double #E8D8C8; /* Soft Beige Border */
             border-radius: 16px;
-            padding: 35px 25px; /* Shrunk padding to save vertical space */
+            padding: 30px 22px; /* Marginally scaled in padding to secure extra layout depth */
             text-align: center;
             max-width: 440px; /* Slightly narrower card layout */
             width: 90%;
@@ -117,7 +119,7 @@
             z-index: 10;
             animation: cardAppear 1.5s ease-out forwards;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
 
         @keyframes cardAppear {
@@ -198,9 +200,22 @@
             font-size: 1rem;
             margin: 10px 0;
             letter-spacing: 1px;
+            line-height: 1.4;
         }
 
         .detail-item strong {
+            color: #F5F5DC;
+        }
+
+        /* Map text styling properties for mobile viewports */
+        .map-link {
+            color: #FFFFFF;
+            text-decoration: underline;
+            text-decoration-color: rgba(232, 216, 200, 0.6);
+            transition: color 0.3s ease;
+        }
+        
+        .map-link:hover {
             color: #F5F5DC;
         }
 
@@ -255,7 +270,7 @@
         </p>
         <span class="surprise-note">🤫 Shh... It's a surprise party! (Don't tell Dipti!)</span>
 
-<div class="details-container">
+        <div class="details-container">
             <div class="detail-item">
                 📅 <strong>Date & Time:</strong> Sept 6th, 2026 @ 11:30 AM PST
             </div>
